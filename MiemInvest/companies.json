@@ -1,0 +1,23 @@
+{
+"userId": "1",
+
+"companies": [
+    {
+      "id": "1",
+      "name": "Газпром",
+      "price": 420,
+      "index": 71,
+     },
+      {
+      "id": "2",
+      "name": "Yandex",
+      "price": 20,
+      "index": 56,
+     },
+      {
+      "id": "3",
+      "name": "Сбер Банк",
+      "price": 2,
+      "index": 34,
+     }]
+}

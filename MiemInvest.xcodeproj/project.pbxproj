@@ -14,6 +14,14 @@
 		0D132F1D280CBCD100A59E53 /* MiemInvestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F1C280CBCD100A59E53 /* MiemInvestTests.swift */; };
 		0D132F27280CBCD100A59E53 /* MiemInvestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F26280CBCD100A59E53 /* MiemInvestUITests.swift */; };
 		0D132F29280CBCD100A59E53 /* MiemInvestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F28280CBCD100A59E53 /* MiemInvestUITestsLaunchTests.swift */; };
+		0D132F37280CBD4400A59E53 /* FinancialInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F36280CBD4400A59E53 /* FinancialInstrument.swift */; };
+		0D132F3A280CBE8400A59E53 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F39280CBE8400A59E53 /* News.swift */; };
+		0D132F3C280CBF8D00A59E53 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F3B280CBF8D00A59E53 /* CircleImage.swift */; };
+		0D132F3E280CC2E800A59E53 /* InstrumentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F3D280CC2E800A59E53 /* InstrumentRow.swift */; };
+		0DD89447280D7F3D0005B69C /* companies.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DD89446280D7F3D0005B69C /* companies.json */; };
+		0DD89449280D83A20005B69C /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD89448280D83A20005B69C /* ModelData.swift */; };
+		0DD8944B280D8BC40005B69C /* InstrumentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8944A280D8BC40005B69C /* InstrumentList.swift */; };
+		0DD8944D280D94720005B69C /* FavoriteInstruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8944C280D94710005B69C /* FavoriteInstruments.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +52,14 @@
 		0D132F22280CBCD100A59E53 /* MiemInvestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiemInvestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D132F26280CBCD100A59E53 /* MiemInvestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiemInvestUITests.swift; sourceTree = "<group>"; };
 		0D132F28280CBCD100A59E53 /* MiemInvestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiemInvestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0D132F36280CBD4400A59E53 /* FinancialInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstrument.swift; sourceTree = "<group>"; };
+		0D132F39280CBE8400A59E53 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		0D132F3B280CBF8D00A59E53 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		0D132F3D280CC2E800A59E53 /* InstrumentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentRow.swift; sourceTree = "<group>"; };
+		0DD89446280D7F3D0005B69C /* companies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = companies.json; sourceTree = "<group>"; };
+		0DD89448280D83A20005B69C /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		0DD8944A280D8BC40005B69C /* InstrumentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentList.swift; sourceTree = "<group>"; };
+		0DD8944C280D94710005B69C /* FavoriteInstruments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteInstruments.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +110,12 @@
 		0D132F0A280CBCCA00A59E53 /* MiemInvest */ = {
 			isa = PBXGroup;
 			children = (
+				0DD89446280D7F3D0005B69C /* companies.json */,
 				0D132F0B280CBCCA00A59E53 /* MiemInvestApp.swift */,
-				0D132F0D280CBCCA00A59E53 /* ContentView.swift */,
+				0D132F35280CBCE900A59E53 /* Views */,
 				0D132F0F280CBCD000A59E53 /* Assets.xcassets */,
 				0D132F11280CBCD000A59E53 /* Preview Content */,
+				0D132F38280CBD4C00A59E53 /* Models */,
 			);
 			path = MiemInvest;
 			sourceTree = "<group>";
@@ -125,6 +143,28 @@
 				0D132F28280CBCD100A59E53 /* MiemInvestUITestsLaunchTests.swift */,
 			);
 			path = MiemInvestUITests;
+			sourceTree = "<group>";
+		};
+		0D132F35280CBCE900A59E53 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D132F0D280CBCCA00A59E53 /* ContentView.swift */,
+				0D132F3B280CBF8D00A59E53 /* CircleImage.swift */,
+				0D132F3D280CC2E800A59E53 /* InstrumentRow.swift */,
+				0DD8944A280D8BC40005B69C /* InstrumentList.swift */,
+				0DD8944C280D94710005B69C /* FavoriteInstruments.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D132F38280CBD4C00A59E53 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0D132F36280CBD4400A59E53 /* FinancialInstrument.swift */,
+				0D132F39280CBE8400A59E53 /* News.swift */,
+				0DD89448280D83A20005B69C /* ModelData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D132F13280CBCD000A59E53 /* Preview Assets.xcassets in Resources */,
+				0DD89447280D7F3D0005B69C /* companies.json in Resources */,
 				0D132F10280CBCD000A59E53 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,7 +299,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D132F0E280CBCCA00A59E53 /* ContentView.swift in Sources */,
+				0DD8944D280D94720005B69C /* FavoriteInstruments.swift in Sources */,
 				0D132F0C280CBCCA00A59E53 /* MiemInvestApp.swift in Sources */,
+				0D132F3A280CBE8400A59E53 /* News.swift in Sources */,
+				0D132F3E280CC2E800A59E53 /* InstrumentRow.swift in Sources */,
+				0DD8944B280D8BC40005B69C /* InstrumentList.swift in Sources */,
+				0D132F37280CBD4400A59E53 /* FinancialInstrument.swift in Sources */,
+				0D132F3C280CBF8D00A59E53 /* CircleImage.swift in Sources */,
+				0DD89449280D83A20005B69C /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
