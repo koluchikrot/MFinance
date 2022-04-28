@@ -16,6 +16,7 @@ struct InstrumentRow: View {
                 .frame(width: 45, height: 45)
             VStack(alignment: .leading){
                 Text(instrument.name)
+                    .foregroundColor(.primary)
                 Text("\(instrument.price)$")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
@@ -32,12 +33,13 @@ struct InstrumentRow: View {
                     .font(.title)
                     .foregroundColor(.red)
             } else {
-                Image(systemName: "arrow.forward")
+                Image(systemName: "minus")
                     .font(.title)
-                    .foregroundColor(.yellow)
+                    .foregroundColor(.primary)
             }
         }
         .padding([.leading, .trailing])
+//        .padding([.top, .bottom], 10)
     }
 }
 

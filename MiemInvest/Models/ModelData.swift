@@ -10,6 +10,9 @@ import Foundation
 var instrumentsResponse: InstrumentsResponse = load("companies.json")
 var instruments: [Instrument] = instrumentsResponse.companies
 
+var newsResponse: NewsResponse = load("news.json")
+var news: [News] = newsResponse.news
+
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
 

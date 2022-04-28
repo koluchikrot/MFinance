@@ -6,13 +6,26 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct News: Codable, Identifiable {
-    var id: Int
-    var header: String?
+    var id: String
+    var header: String
     var publishedDate: Date?
-    var source: String?
-    var fullText: String?
-    var shortText: String?
-    var sentimental: Float
+    var source: String
+    var fullText: String
+    var fileID: String?
+    var instrumentsId: [String]
+    
+    var image: Image {
+        if let fileID = fileID {
+            return Image(fileID)
+        } else {
+            return Image("sample_image")
+        }
+    }
+}
+
+struct NewsResponse: Codable {
+    var news: [News]
 }

@@ -12,11 +12,16 @@ struct FavoriteInstruments: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .leading) {
+                    TopInstrument(title: "Top company for today", instruments: [instruments[0]])
                     Text("Stocks")
                         .font(.title2)
                         .padding(.leading)
                     ForEach(instruments) { instrument in
-                        InstrumentRow(instrument: instrument)
+                        NavigationLink {
+                            InstrumentNavigation(instrument: instrument)
+                        } label: {
+                            InstrumentRow(instrument: instrument)
+                        }
                     }
                     Spacer()
                 }

@@ -13,6 +13,7 @@ struct InstrumentList: View {
         List(instruments, id: \.id) { instrument in
             InstrumentRow(instrument: instrument)
         }
+        .listStyle(.inset)
     }
 }
 
