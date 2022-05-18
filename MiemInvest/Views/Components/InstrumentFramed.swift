@@ -19,14 +19,16 @@ struct InstrumentFramed: View {
                     .padding([.top, .bottom])
             }
         }
-        .background(Color.secondary.colorInvert()
-                        .opacity(0.75))
+        .background(Color.primary
+                        .opacity(0.1))
         .cornerRadius(15)
     }
 }
 
 struct InstrumentFramed_Previews: PreviewProvider {
+    static let modelData = ModelData()
+    
     static var previews: some View {
-        InstrumentFramed(instrument: instruments[0])
+        InstrumentFramed(instrument: modelData.instruments[0])
     }
 }

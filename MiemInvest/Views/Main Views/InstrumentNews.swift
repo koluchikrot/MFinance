@@ -13,8 +13,13 @@ struct InstrumentNews: View {
     var body: some View {
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .leading) {
-                    ForEach(news) {newsUnit in
-                        NewsRow(news: newsUnit)
+                    if !companyNews.isEmpty {
+                        ForEach(companyNews) {newsUnit in
+                            NewsRow(news: newsUnit)
+                        }
+                    } else {
+                        Text("No news published for this instrument yet")
+                            .padding(.top)
                     }
                 }
             }
@@ -27,6 +32,6 @@ struct InstrumentNews: View {
 
 struct InstrumentNews_Previews: PreviewProvider {
     static var previews: some View {
-        InstrumentNews(instrument: instruments[0])
+        InstrumentNews(instrument: ModelData().instruments[0])
     }
 }

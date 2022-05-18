@@ -14,11 +14,12 @@ struct InstrumentList: View {
             InstrumentRow(instrument: instrument)
         }
         .listStyle(.inset)
+        .listRowInsets(EdgeInsets())
     }
 }
 
 struct InstrumentList_Previews: PreviewProvider {
     static var previews: some View {
-        InstrumentList(instruments: instruments)
+        InstrumentList(instruments: ModelData().instruments)
     }
 }

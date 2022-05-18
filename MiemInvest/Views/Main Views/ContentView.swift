@@ -14,6 +14,7 @@ struct ContentView: View {
         case favorites
         case lookup
         case news
+        case auth
     }
     
     var body: some View {
@@ -21,21 +22,22 @@ struct ContentView: View {
             FavoriteInstruments()
                 .tabItem {
                     Label("Favorites", systemImage: "star")
-//                        .labelStyle(.iconOnly)
                 }
                 .tag(Tab.favorites)
             LookUp()
                 .tabItem {
                     Label("Search", systemImage: "doc.text.magnifyingglass")
-//                        .labelStyle(.iconOnly)
                 }
                 .tag(Tab.lookup)
             LatestNews()
                 .tabItem {
                     Label("News", systemImage: "note.text")
-//                        .labelStyle(.iconOnly)
                 }
                 .tag(Tab.news)
+            AuthView()
+                .tabItem{
+                    Label("Auth", systemImage: "person.fill")
+                }
         }
     }
 }
@@ -43,5 +45,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ModelData())
     }
 }

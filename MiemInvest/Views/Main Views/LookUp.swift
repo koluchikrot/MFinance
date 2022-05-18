@@ -22,7 +22,21 @@ struct LookUp: View {
                         }
                     }
                     .searchable(text: $searchText, prompt: "Search for company")
-                    TopInstrument(title: "Top companies", instruments: [instruments[0], instruments[1]])
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            NavigationLink {
+                                FilteredInstruments(categoryName: "Russian")
+                            } label: {
+                                FilterButton(filterLabel: "Russian")
+                            }
+                            FilterButton(filterLabel: "American")
+                            FilterButton(filterLabel: "Chinese")
+                            FilterButton(filterLabel: "Latin")
+                            FilterButton(filterLabel: "German")
+                        }
+                        .listRowInsets(EdgeInsets())
+                    }
+//                    TopInstrument(title: "Recomendations", instruments: [ModelData().instruments[0], ModelData().instruments[1]])
                 }
                 .navigationTitle("Look up")
             }
@@ -33,7 +47,7 @@ struct LookUp: View {
         if searchText.isEmpty {
             return []
         } else {
-            return instruments.filter { $0.name.contains(searchText) }
+            return ModelData().instruments.filter { $0.name.contains(searchText) }
         }
     }
 }

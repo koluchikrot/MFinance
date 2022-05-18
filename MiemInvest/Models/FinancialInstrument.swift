@@ -11,9 +11,12 @@ import SwiftUI
 struct Instrument: Codable, Identifiable {
     var id: String
     var name: String
-    var price: Int
-    var index: Int
+    var ticker: String?
+    var price: Int?
+    var index: Int?
     var fileID: String?
+    
+    var isFavorite: Bool
     
     var image: Image {
         if let fileID = fileID {

@@ -7,17 +7,28 @@
       "name": "Газпром",
       "price": 420,
       "index": 71,
+      "isFavorite": true,
+      "fileID": "gazprom"
      },
       {
       "id": "2",
       "name": "Yandex",
       "price": 20,
       "index": 56,
+      "isFavorite": false,
      },
       {
       "id": "3",
       "name": "Сбер Банк",
       "price": 2,
       "index": 34,
+      "isFavorite": true,
+     },
+      {
+      "id": "4",
+      "name": "Роснефть",
+      "price": 33,
+      "index": 20,
+      "isFavorite": false,
      }]
 }
