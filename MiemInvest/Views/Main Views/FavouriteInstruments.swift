@@ -35,7 +35,7 @@ struct FavoriteInstruments: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.leading)
-                    ForEach(favoriteInstruments) { instrument in
+                    ForEach(modelData.instruments) { instrument in
                         NavigationLink {
                             InstrumentNavigation(instrument: instrument)
                         } label: {

@@ -12,14 +12,15 @@ struct Instrument: Codable, Identifiable {
     var id: String
     var name: String
     var ticker: String?
+    var country: String?
     var price: Int?
     var index: Int?
-    var fileID: String?
+    var attachmentId: String?
     
     var isFavorite: Bool
     
     var image: Image {
-        if let fileID = fileID {
+        if let fileID = attachmentId {
             return Image(fileID)
         } else {
             return Image("sample_image")
@@ -28,6 +29,5 @@ struct Instrument: Codable, Identifiable {
 }
 
 struct InstrumentsResponse: Codable {
-    var userId: String
-    var companies: [Instrument]
+    var instruments: [Instrument]
 }
