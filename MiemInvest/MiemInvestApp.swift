@@ -13,8 +13,11 @@ struct MiemInvestApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let viewModel = SignInViewModel()
+            ContentView(viewModel: viewModel)
                 .environmentObject(modelData)
+//            ContentView()
+//                .environmentObject(modelData)
         }
     }
 }

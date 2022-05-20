@@ -91,7 +91,11 @@ class InstrumentApi {
     }
     
     func fetch<T: Decodable>(_ url: URL) -> AnyPublisher<T, Error> {
-        let basicToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrb2x1Y2hpa3JvdCIsImV4cCI6MTY1MzA4OTA2NCwiaWF0IjoxNjUzMDQ1ODY0fQ.3Z4UKrUcpRNCj1jpl6MCId2KuSFL15VwGjGLWVurug44CRcJF9GhRxLFQZymD4d11B6pOrVh1ygdJmERCd7_Jg"
+        let defaults = UserDefaults.standard
+        let basicToken = defaults.value(forKey: "jsonwebtoken")!
+        
+        
+//        let basicToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrb2x1Y2hpa3JvdCIsImV4cCI6MTY1MzA4OTA2NCwiaWF0IjoxNjUzMDQ1ODY0fQ.3Z4UKrUcpRNCj1jpl6MCId2KuSFL15VwGjGLWVurug44CRcJF9GhRxLFQZymD4d11B6pOrVh1ygdJmERCd7_Jg"
         let headers = [
             "Authorization": "Bearer \(basicToken)",
         ]

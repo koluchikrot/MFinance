@@ -22,6 +22,7 @@ struct TokenResponse: Codable {
 class SignInViewModel: NSObject, ObservableObject, ASWebAuthenticationPresentationContextProviding {
     
     @Published var isAuthenticated: Bool = false
+    @Published var loading: Bool = false
     
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return ASPresentationAnchor()
@@ -57,6 +58,9 @@ class SignInViewModel: NSObject, ObservableObject, ASWebAuthenticationPresentati
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
+                DispatchQueue.main.async {
+                    self.loading = false
+                }
             }
         }
         
@@ -66,6 +70,8 @@ class SignInViewModel: NSObject, ObservableObject, ASWebAuthenticationPresentati
     }
     
     func getToken(code: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+        self.loading = true
+        
         guard let queryUrl = URL(string: "http://192.168.0.17:8443/api/login/callback") else {
             completion(.failure(.custom(errorMessage: "URL is not correct")))
             return
