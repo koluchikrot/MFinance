@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TopInstrument: View {
     var title: String
-    var instruments: [Instrument]
+    @ObservedObject var modelData: ModelData
     
     var body: some View {
         ZStack{
@@ -18,7 +18,7 @@ struct TopInstrument: View {
                     .fontWeight(.bold)
                     .font(.title2)
                     .padding([.leading, .bottom])
-                ForEach(instruments) { instrument in
+                ForEach(modelData.instruments) { instrument in
                     NavigationLink {
                         InstrumentNavigation(instrument: instrument)
                     } label: {
@@ -38,6 +38,6 @@ struct TopInstrument: View {
 
 struct TopInstrument_Previews: PreviewProvider {
     static var previews: some View {
-        TopInstrument(title: "Top company", instruments: [ModelData().instruments[0]])
+        TopInstrument(title: "Top company", modelData: ModelData(index: 2, text: ""))
     }
 }

@@ -32,6 +32,8 @@ struct AuthView: View {
                     Spacer()
                     
                     Image("microsoft_logo")
+                        .resizable()
+                        .frame(width: 21, height: 21)
                     
                     Text("Sign in with Microsoft")
                         .foregroundColor(.primary)

@@ -12,15 +12,16 @@ enum Endpoint {
     // instrument lists
     case favoriteInstruments
     case topInstruments
+    case userTop
     case filteredInstruments(_ filterName: String)
     case searchedInstruments(_ searchText: String)
     
     // news lists
     case latestNews
-    case instrumentNews(_ instrumentId: String)
+    case instrumentNews(instrumentId: String)
     
     // instrument information
-    case forecast(_ instrumentId: String)
+    case forecast(instrumentId: String)
     
     var baseUrl: URL {
          URL(string: "http://192.168.0.17:8443/")!
@@ -29,17 +30,21 @@ enum Endpoint {
     func path() -> String {
         switch self {
         case .favoriteInstruments:
-            return "user/favorites"
+            return "api/user/favorites"
         case .topInstruments:
-            return "user/top"
+            return "api/instrument/top"
+        case .userTop:
+            return "api/user/top"
         case .filteredInstruments:
             return "filter"
         case .searchedInstruments:
             return "search"
-        case .latestNews, .instrumentNews:
-            return "news"
-        case .forecast(let instrumentId):
-            return "forecast?instrumentId=\(instrumentId)"
+        case .latestNews:
+            return "api/news/all"
+        case .instrumentNews:
+            return "api/news/instrument"
+        case .forecast:
+            return "forecast"
         }
     }
     
@@ -50,14 +55,16 @@ enum Endpoint {
             return nil
         }
         switch self {
-        case .filteredInstruments (let filterName):
+        case .filteredInstruments(let filterName):
             urlComponents.queryItems = [URLQueryItem(name: "filterName", value: filterName)]
         case .searchedInstruments(let searchText):
             urlComponents.queryItems = [URLQueryItem(name: "searchText", value: searchText)]
         case .instrumentNews(let instrumentId):
             urlComponents.queryItems = [URLQueryItem(name: "instrumentId", value: instrumentId)]
+        case .forecast(let instrumentId):
+            urlComponents.queryItems = [URLQueryItem(name: "instrumentId", value: instrumentId)]
         default:
-            return queryURL
+            break
         }
         return urlComponents.url
     }
@@ -66,11 +73,12 @@ enum Endpoint {
         switch index {
         case 0: self = .favoriteInstruments
         case 1: self = .topInstruments
-        case 2: self = .filteredInstruments(text)
-        case 3: self = .searchedInstruments(text)
-        case 4: self = .latestNews
-        case 5: self = .instrumentNews(text)
-        case 6: self = .forecast(text)
+        case 2: self = .userTop
+        case 3: self = .filteredInstruments(text)
+        case 4: self = .searchedInstruments(text)
+        case 5: self = .latestNews
+        case 6: self = .instrumentNews(instrumentId: text)
+        case 7: self = .forecast(instrumentId: text)
         default: return nil
         }
     }
@@ -94,8 +102,6 @@ class InstrumentApi {
         let defaults = UserDefaults.standard
         let basicToken = defaults.value(forKey: "jsonwebtoken")!
         
-        
-//        let basicToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrb2x1Y2hpa3JvdCIsImV4cCI6MTY1MzA4OTA2NCwiaWF0IjoxNjUzMDQ1ODY0fQ.3Z4UKrUcpRNCj1jpl6MCId2KuSFL15VwGjGLWVurug44CRcJF9GhRxLFQZymD4d11B6pOrVh1ygdJmERCd7_Jg"
         let headers = [
             "Authorization": "Bearer \(basicToken)",
         ]
@@ -110,10 +116,9 @@ class InstrumentApi {
             .map{ response in
                 print("\(response.data)")
                 return response.data }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .decode(type: T.self, decoder: decoder)
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
-        print("\(publisher)")
         
         return publisher
     }
@@ -128,6 +133,19 @@ class InstrumentApi {
                 return response.instruments
             }
             .replaceError(with: [Instrument]())
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchNews(from endpoint: Endpoint) -> AnyPublisher<[News], Never> {
+        guard let url = endpoint.absoluteUrl else {
+            return Just([News]()).eraseToAnyPublisher()
+        }
+        return fetch(url)
+            .map { (response: NewsResponse) -> [News] in
+                print("\(response)")
+                return response.news
+            }
+            .replaceError(with: [News]())
             .eraseToAnyPublisher()
     }
 }

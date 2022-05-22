@@ -10,9 +10,13 @@ import SwiftUI
 struct InstrumentRow: View {
     let instrument: Instrument
     
+    var firstLetter: String {
+        return String(instrument.name.prefix(1))
+    }
+    
     var body: some View {
-        HStack{
-            CircleImage(image: instrument.image)
+        HStack(alignment: .center, spacing: 5){
+            CircleLogo(letter: firstLetter)
                 .frame(width: 50, height: 50)
             VStack(alignment: .leading, spacing: 5){
                 Text(instrument.name)
@@ -31,15 +35,12 @@ struct InstrumentRow: View {
             if let index = instrument.index {
                 if index > 60 {
                     Image(systemName: "arrowtriangle.up.fill")
-    //                    .font(.title)
                         .foregroundColor(.green)
                 } else if index < 40 {
                     Image(systemName: "arrowtriangle.down.fill")
-    //                    .font(.title)
                         .foregroundColor(.red)
                 } else {
                     Image(systemName: "minus")
-    //                    .font(.title)
                         .foregroundColor(.primary)
                 }
             }

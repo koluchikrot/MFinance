@@ -10,6 +10,8 @@ import SwiftUI
 struct LookUp: View {
     @State private var searchText = ""
     
+    @ObservedObject var modelData = ModelData(index: 1, text: "")
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
@@ -36,7 +38,7 @@ struct LookUp: View {
                         }
                         .listRowInsets(EdgeInsets())
                     }
-//                    TopInstrument(title: "Recomendations", instruments: [ModelData().instruments[0], ModelData().instruments[1]])
+                    TopInstrument(title: "Recomendations", modelData: ModelData(index: 1, text: ""))
                 }
                 .navigationTitle("Look up")
             }
@@ -47,7 +49,7 @@ struct LookUp: View {
         if searchText.isEmpty {
             return []
         } else {
-            return ModelData().instruments.filter { $0.name.contains(searchText) }
+            return modelData.instruments.filter { $0.name.contains(searchText) }
         }
     }
 }

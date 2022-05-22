@@ -17,7 +17,7 @@ struct Instrument: Codable, Identifiable {
     var index: Int?
     var attachmentId: String?
     
-    var isFavorite: Bool
+    var isFavorite: Bool?
     
     var image: Image {
         if let fileID = attachmentId {

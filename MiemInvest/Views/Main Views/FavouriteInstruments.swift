@@ -11,26 +11,21 @@ struct FavoriteInstruments: View {
 //    @EnvironmentObject var modelData: ModelData
     @ObservedObject var modelData = ModelData()
     
-    var favoriteInstruments: [Instrument] { modelData.instruments.filter { instrument in
-            instrument.isFavorite
-        }
-    }
-    
-    init() {
-        let appearance = UINavigationBarAppearance()
+//    init() {
+//        let appearance = UINavigationBarAppearance()
 //        appearance.shadowColor = .clear
 //        appearance.backgroundEffect = .none
-//        appearance.backgroundColor = .primary
-            
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
+//        appearance.backgroundColor = UIColor.secondarySystemBackground
+//
+//        UINavigationBar.appearance().standardAppearance = appearance
+//        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+//    }
     
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .leading) {
-//                    TopInstrument(title: "Top company for today", instruments: [modelData.instruments[0]])
+                    TopInstrument(title: "Top company for today", modelData: ModelData(index: 2, text: ""))
                     Text("Stocks")
                         .font(.title2)
                         .fontWeight(.bold)
@@ -55,6 +50,6 @@ struct FavoriteInstruments_Previews: PreviewProvider {
     
     static var previews: some View {
         FavoriteInstruments()
-            .environmentObject(modelData)
+//            .environmentObject(modelData)
     }
 }

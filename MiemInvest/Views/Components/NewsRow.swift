@@ -11,12 +11,12 @@ struct NewsRow: View {
     var news: News
     
     var body: some View {
-        VStack (alignment: .leading) {
+        VStack (alignment: .leading, spacing: 10) {
             HStack {
-                CircleImage(image: news.image)
-                    .frame(width: 38, height: 38)
-                VStack(alignment: .leading) {
+                HStack {
                     Text(news.source)
+                    
+                    Text("|")
                     
                     if let publishedDate = news.publishedDate {
                         if Calendar.current.isDateInToday(publishedDate) {
@@ -27,8 +27,6 @@ struct NewsRow: View {
                         }
                         else {
                             Text(publishedDate.formatted())
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
                         }
                     } else {
                         Text(Date(timeIntervalSinceNow: -3000).formatted())
@@ -38,16 +36,25 @@ struct NewsRow: View {
                 }
                 Spacer()
             }
-            Text(news.header)
-                .font(.headline)
-                .padding(.top)
-                .padding(.bottom, 10)
+//            .font(.subheadline)
+            .foregroundColor(.secondary)
+            
+            if let url = URL(string: news.link) {
+                Link(destination: url){
+                    Text(news.header)
+                        .font(.headline)
+                        .foregroundColor(Color.primary)
+                        .multilineTextAlignment(.leading)
+                }
+            } else {
+                Text(news.header)
+                    .font(.headline)
+            }
+            
             Text(news.fullText)
             
-            ForEach(news.instrumentsId, id: \.self) { instrumentId in
-                if let instrumentId = Int(instrumentId) {
-                    InstrumentFramed(instrument: ModelData().instruments[instrumentId - 1])
-                }
+            ForEach(news.instruments) { instrument in
+                InstrumentFramed(instrument: instrument)
             }
         }
         .padding()
@@ -56,6 +63,6 @@ struct NewsRow: View {
 
 struct NewsRow_Previews: PreviewProvider {
     static var previews: some View {
-        NewsRow(news: news[0])
+        NewsRow(news: NewsViewModel().news[0])
     }
 }

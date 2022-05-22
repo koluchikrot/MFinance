@@ -29,17 +29,17 @@ struct InstrumentNavigation: View {
         case news
     }
     
-    init(instrument: Instrument) {
-        self.instrument = instrument
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.shadowColor = .clear
-        appearance.backgroundEffect = .none
-        appearance.backgroundColor = UIColor.clear
-            
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
+//    init(instrument: Instrument) {
+//        self.instrument = instrument
+//
+//        let appearance = UINavigationBarAppearance()
+//        appearance.shadowColor = .clear
+//        appearance.backgroundEffect = .none
+//        appearance.backgroundColor = UIColor.clear
+//
+//        UINavigationBar.appearance().standardAppearance = appearance
+//        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+//    }
     
     var body: some View {
         ZStack {
@@ -55,13 +55,13 @@ struct InstrumentNavigation: View {
                     case .forecasts:
                         InstrumentForecasts()
                     case .news:
-                        InstrumentNews(instrument: instrument)
+                        InstrumentNews(instrument: instrument, newsModel: NewsViewModel(index: 6, text: instrument.id))
                     }
                 }
             }
             .navigationTitle(instrument.name)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: FavoriteButton(isSet: $modelData.instruments[insrtumentIndex].isFavorite))
+//            .navigationBarItems(trailing: FavoriteButton(isSet: $modelData.instruments[insrtumentIndex].isFavorite))
             
             // navigation tab
             Group {

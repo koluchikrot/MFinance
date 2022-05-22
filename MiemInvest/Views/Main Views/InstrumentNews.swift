@@ -10,28 +10,26 @@ import SwiftUI
 struct InstrumentNews: View {
     var instrument: Instrument
     
+    @ObservedObject var newsModel: NewsViewModel
+    
     var body: some View {
-            ScrollView(.vertical, showsIndicators: false){
-                VStack(alignment: .leading) {
-                    if !companyNews.isEmpty {
-                        ForEach(companyNews) {newsUnit in
-                            NewsRow(news: newsUnit)
-                        }
-                    } else {
-                        Text("No news published for this instrument yet")
-                            .padding(.top)
+        ScrollView(.vertical, showsIndicators: false){
+            VStack(alignment: .leading) {
+                if !newsModel.news.isEmpty {
+                    ForEach(newsModel.news) {newsUnit in
+                        NewsRow(news: newsUnit)
                     }
+                } else {
+                    Text("No news published for this instrument yet")
+                        .padding(.top)
                 }
             }
-    }
-    
-    var companyNews: [News] {
-        return news.filter { $0.instrumentsId.contains(instrument.id) }
+        }
     }
 }
 
 struct InstrumentNews_Previews: PreviewProvider {
     static var previews: some View {
-        InstrumentNews(instrument: ModelData().instruments[0])
+        InstrumentNews(instrument: ModelData().instruments[0], newsModel: NewsViewModel(index: 6, text: "1"))
     }
 }

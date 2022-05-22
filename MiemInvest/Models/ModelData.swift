@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-var instrumentsResponse: InstrumentsResponse = load("companies.json")
+//var instrumentsResponse: InstrumentsResponse = load("companies.json")
 
 final class ModelData: ObservableObject {
 //        @Published var instruments: [Instrument] = instrumentsResponse.companies
@@ -41,8 +41,8 @@ final class ModelData: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
 }
 
-var newsResponse: NewsResponse = load("news.json")
-var news: [News] = newsResponse.news
+//var newsResponse: NewsResponse = load("news.json")
+//var news: [News] = newsResponse.news
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

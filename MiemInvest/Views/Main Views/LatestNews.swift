@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct LatestNews: View {
+    @ObservedObject var newsModel = NewsViewModel()
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .leading) {
-                    ForEach(news) {newsUnit in
+                    ForEach(newsModel.news) {newsUnit in
                         NewsRow(news: newsUnit)
                     }
                 }

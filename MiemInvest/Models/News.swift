@@ -14,16 +14,9 @@ struct News: Codable, Identifiable {
     var publishedDate: Date?
     var source: String
     var fullText: String
-    var fileID: String?
-    var instrumentsId: [String]
-    
-    var image: Image {
-        if let fileID = fileID {
-            return Image(fileID)
-        } else {
-            return Image("sample_image")
-        }
-    }
+    var link: String
+    var sentiment: String
+    var instruments: [Instrument]
 }
 
 struct NewsResponse: Codable {
