@@ -20,6 +20,8 @@ struct InstrumentNavigation: View {
     
     @State private var selection: Tab = .index
     
+    @State var selectedIndex: Int = 0
+    
     let screenWidth = screenSize.width
     let navBarColor = Color.blue.opacity(0.3)
     
@@ -49,14 +51,24 @@ struct InstrumentNavigation: View {
                     Rectangle()
                         .fill(Color.clear)
                         .frame(width: screenWidth, height: 45)
-                    switch selection {
-                    case .index:
-                        InstrumentIndex()
-                    case .forecasts:
-                        InstrumentForecasts()
-                    case .news:
-                        InstrumentNews(instrument: instrument, newsModel: NewsViewModel(index: 6, text: instrument.id))
-                    }
+//                    switch selection {
+//                    case .index:
+//                        InstrumentIndex()
+//                    case .forecasts:
+//                        InstrumentForecasts()
+//                    case .news:
+//                        InstrumentNews(instrument: instrument, newsModel: NewsViewModel(index: 6, text: instrument.id))
+//                    }
+//                    switch selectedIndex {
+//                    case 0:
+//                        InstrumentIndex()
+//                    case 1:
+//                        InstrumentForecasts()
+//                    case 2:
+//                        InstrumentNews(newsModel: NewsViewModel(index: 6, text: instrument.id))
+//                    default:
+//                        InstrumentIndex()
+//                    }
                 }
             }
             .navigationTitle(instrument.name)
@@ -78,20 +90,21 @@ struct InstrumentNavigation: View {
                             Rectangle()
                                 .fill(Color.clear)
                                 .frame(width: screenWidth, height: 50)
-                            Section {
-                                Picker("About the instrument", selection: $selection){
-                                        Text("Index")
-                                            .tag(Tab.index)
-                                        Text("Forecasts")
-                                            .tag(Tab.forecasts)
-                                        Text("News")
-                                            .tag(Tab.news)
-                                }
-                                .pickerStyle(SegmentedPickerStyle())
-                            }
-                            .padding(.horizontal, 10)
+//                            Section {
+//                                Picker("About the instrument", selection: $selection){
+//                                        Text("Index")
+//                                            .tag(Tab.index)
+//                                        Text("Forecasts")
+//                                            .tag(Tab.forecasts)
+//                                        Text("News")
+//                                            .tag(Tab.news)
+//                                }
+//                                .pickerStyle(SegmentedPickerStyle())
+                                SegmentedControl(selectedIndex: $selectedIndex, titles: ["Index", "Forecast", "News"])
+//                            }
+//                            .padding(.horizontal, 10)
                         }
-                        Spacer()
+//                        Spacer()
                     }
                 }
             }

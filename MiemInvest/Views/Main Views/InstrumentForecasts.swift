@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct InstrumentForecasts: View {
+    @ObservedObject var infoModel: InstrumentInfoViewModel
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ForecastDetail()
-            ForecastDetail()
+            ForEach(infoModel.instrumentInfo!.predictions) { prediction in
+                ForecastDetail(type: prediction.type, certainty: prediction.certainty, prediction: prediction.prediction, date: prediction.date)
+            }
         }
     }
 }
 
 struct InstrumentForecasts_Previews: PreviewProvider {
     static var previews: some View {
-        InstrumentForecasts()
+        InstrumentForecasts(infoModel: InstrumentInfoViewModel(instrumentId: "1"))
     }
 }

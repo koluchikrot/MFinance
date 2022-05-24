@@ -11,16 +11,6 @@ struct FavoriteInstruments: View {
 //    @EnvironmentObject var modelData: ModelData
     @ObservedObject var modelData = ModelData()
     
-//    init() {
-//        let appearance = UINavigationBarAppearance()
-//        appearance.shadowColor = .clear
-//        appearance.backgroundEffect = .none
-//        appearance.backgroundColor = UIColor.secondarySystemBackground
-//
-//        UINavigationBar.appearance().standardAppearance = appearance
-//        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-//    }
-    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false){
@@ -32,7 +22,7 @@ struct FavoriteInstruments: View {
                         .padding(.leading)
                     ForEach(modelData.instruments) { instrument in
                         NavigationLink {
-                            InstrumentNavigation(instrument: instrument)
+                            TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
                         } label: {
                             InstrumentRow(instrument: instrument)
                         }

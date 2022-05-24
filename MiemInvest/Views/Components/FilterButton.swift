@@ -12,12 +12,16 @@ struct FilterButton: View {
     
     var body: some View {
         Text(filterLabel)
-            .padding(.horizontal)
-            .padding(.vertical, 5)
-            .background(Color.primary.colorInvert())
-            .clipShape(Capsule())
-            .shadow(color: Color.primary.opacity(0.10), radius: 10.0, x: 0, y: 0.0)
-            .padding([.leading, .top, .bottom])
+            .foregroundColor(Color.white)
+//            .fontWeight(.bold)
+            .multilineTextAlignment(.leading)
+            .padding()
+            .frame(width: 155, height: 125, alignment: .bottomLeading)
+            .background(Color.randomApproved)
+            .cornerRadius(10)
+//            .shadow(color: Color("Shadow"), radius: 10.0, x: 0, y: 0.0)
+//            .padding([.leading, .top, .bottom])
+            .padding(.leading)
     }
 }
 

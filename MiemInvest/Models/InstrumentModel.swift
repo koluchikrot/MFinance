@@ -13,7 +13,7 @@ struct Instrument: Codable, Identifiable {
     var name: String
     var ticker: String?
     var country: String?
-    var price: Int?
+    var price: String?
     var index: Int?
     var attachmentId: String?
     

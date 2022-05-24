@@ -36,7 +36,6 @@ struct NewsRow: View {
                 }
                 Spacer()
             }
-//            .font(.subheadline)
             .foregroundColor(.secondary)
             
             if let url = URL(string: news.link) {
@@ -53,8 +52,10 @@ struct NewsRow: View {
             
             Text(news.fullText)
             
-            ForEach(news.instruments) { instrument in
-                InstrumentFramed(instrument: instrument)
+            HStack {
+                ForEach(news.instruments) { instrument in
+                    InstrumentFramed(instrument: instrument)
+                }
             }
         }
         .padding()

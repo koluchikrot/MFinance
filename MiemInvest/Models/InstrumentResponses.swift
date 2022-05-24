@@ -21,7 +21,10 @@ enum Endpoint {
     case instrumentNews(instrumentId: String)
     
     // instrument information
-    case forecast(instrumentId: String)
+    case instrumentInfo(instrumentId: String)
+    
+    // filters
+    case filters
     
     var baseUrl: URL {
          URL(string: "http://192.168.0.17:8443/")!
@@ -36,15 +39,17 @@ enum Endpoint {
         case .userTop:
             return "api/user/top"
         case .filteredInstruments:
-            return "filter"
+            return "api/instrument/search/filtered"
         case .searchedInstruments:
             return "search"
         case .latestNews:
             return "api/news/all"
         case .instrumentNews:
             return "api/news/instrument"
-        case .forecast:
-            return "forecast"
+        case .instrumentInfo(let instrumentId):
+            return "api/instrument/\(instrumentId)/info"
+        case .filters:
+            return "api/instrument/filters"
         }
     }
     
@@ -56,12 +61,10 @@ enum Endpoint {
         }
         switch self {
         case .filteredInstruments(let filterName):
-            urlComponents.queryItems = [URLQueryItem(name: "filterName", value: filterName)]
+            urlComponents.queryItems = [URLQueryItem(name: "filter", value: filterName)]
         case .searchedInstruments(let searchText):
             urlComponents.queryItems = [URLQueryItem(name: "searchText", value: searchText)]
         case .instrumentNews(let instrumentId):
-            urlComponents.queryItems = [URLQueryItem(name: "instrumentId", value: instrumentId)]
-        case .forecast(let instrumentId):
             urlComponents.queryItems = [URLQueryItem(name: "instrumentId", value: instrumentId)]
         default:
             break
@@ -78,7 +81,8 @@ enum Endpoint {
         case 4: self = .searchedInstruments(text)
         case 5: self = .latestNews
         case 6: self = .instrumentNews(instrumentId: text)
-        case 7: self = .forecast(instrumentId: text)
+        case 7: self = .instrumentInfo(instrumentId: text)
+        case 8: self = .filters
         default: return nil
         }
     }
@@ -106,7 +110,7 @@ class InstrumentApi {
             "Authorization": "Bearer \(basicToken)",
         ]
         
-        
+        print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.timeoutInterval = 60
@@ -129,7 +133,7 @@ class InstrumentApi {
         }
         return fetch(url)
             .map { (response: InstrumentsResponse) -> [Instrument] in
-                print("\(response)")
+//                print("\(response)")
                 return response.instruments
             }
             .replaceError(with: [Instrument]())
@@ -142,10 +146,37 @@ class InstrumentApi {
         }
         return fetch(url)
             .map { (response: NewsResponse) -> [News] in
-                print("\(response)")
+//                print("\(response)")
                 return response.news
             }
             .replaceError(with: [News]())
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchFilters(from endpoint: Endpoint) -> AnyPublisher<[Filter], Never> {
+        guard let url = endpoint.absoluteUrl else {
+            return Just([Filter]()).eraseToAnyPublisher()
+        }
+        return fetch(url)
+            .map { (response: FilterResponse) -> [Filter] in
+                print("\(response)")
+                return response.filters
+            }
+            .replaceError(with: [Filter]())
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchInstrumentInfo(from endpoint: Endpoint) -> AnyPublisher<InstrumentInfo?, Never> {
+        guard let url = endpoint.absoluteUrl else {
+            print("wrong url")
+            return Just(nil).eraseToAnyPublisher()
+        }
+        return fetch(url)
+//            .map { (response: FilterResponse) -> [Filter] in
+//                print("\(response)")
+//                return response.filters
+//            }
+            .replaceError(with: nil)
             .eraseToAnyPublisher()
     }
 }

@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ForecastDetail: View {
+    var type: String
+    var certainty: String
+    var prediction: String
+    var date: String
     
     var body: some View {
         ZStack{
             VStack(alignment: .leading) {
-                Text("Technical analysis")
+                Text(type.firstUppercased)
                     .font(.title2)
                     .padding(.leading)
                 Divider()
@@ -20,22 +24,22 @@ struct ForecastDetail: View {
                     VStack(alignment: .leading) {
                         Text("Price change")
                             .foregroundColor(.secondary)
-                        Text("Up (80%)")
+                        Text(prediction.firstUppercased)
                     }
                     .padding([.leading])
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text("Last 5 predictions accuracy")
+                        Text("Certainty")
                             .foregroundColor(.secondary)
-                        Text("77%")
+                        Text(certainty)
                     }
                     .padding(.trailing)
                 }
             }
             .padding([.top, .bottom])
-            .background(Color.primary.colorInvert())
-            .cornerRadius(15)
-            .shadow(color: Color.primary.opacity(0.10), radius: 15.0, x: 0, y: 0.0)
+            .background(Color("Background"))
+            .cornerRadius(10)
+            .shadow(color: Color("Shadow"), radius: 15.0, x: 0, y: 0.0)
         }
         .padding()
     }
@@ -43,6 +47,11 @@ struct ForecastDetail: View {
 
 struct ForecastDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ForecastDetail()
+        ForecastDetail(type: "Barrier", certainty: "47,00", prediction: "UP", date: "2022-05-20")
     }
+}
+
+extension StringProtocol {
+    var firstUppercased: String { return prefix(1).uppercased() + dropFirst().lowercased() }
+    var firstCapitalized: String { return prefix(1).capitalized + dropFirst().lowercased() }
 }

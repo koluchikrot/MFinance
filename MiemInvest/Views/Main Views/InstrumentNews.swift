@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct InstrumentNews: View {
-    var instrument: Instrument
     
     @ObservedObject var newsModel: NewsViewModel
     
@@ -30,6 +29,6 @@ struct InstrumentNews: View {
 
 struct InstrumentNews_Previews: PreviewProvider {
     static var previews: some View {
-        InstrumentNews(instrument: ModelData().instruments[0], newsModel: NewsViewModel(index: 6, text: "1"))
+        InstrumentNews(newsModel: NewsViewModel(index: 6, text: "1"))
     }
 }

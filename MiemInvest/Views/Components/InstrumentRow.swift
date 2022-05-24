@@ -22,8 +22,8 @@ struct InstrumentRow: View {
                 Text(instrument.name)
                     .foregroundColor(.primary)
                     .font(.headline)
-                if let price = instrument.price {
-                    Text("\(price)$")
+                if let ticker = instrument.ticker {
+                    Text(ticker)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
@@ -32,16 +32,30 @@ struct InstrumentRow: View {
             
             Spacer()
             
-            if let index = instrument.index {
-                if index > 60 {
-                    Image(systemName: "arrowtriangle.up.fill")
-                        .foregroundColor(.green)
-                } else if index < 40 {
-                    Image(systemName: "arrowtriangle.down.fill")
-                        .foregroundColor(.red)
-                } else {
-                    Image(systemName: "minus")
+            VStack(alignment: .trailing, spacing: 5){
+                if let price = instrument.price {
+                    Text(price)
                         .foregroundColor(.primary)
+                }
+                if let index = instrument.index {
+                    if index >= 50 {
+                        HStack(alignment: .center, spacing: 2) {
+                            Text("\(index)")
+                            Image(systemName: "arrow.up.square.fill")
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.green)
+                    } else if index < 50 {
+                        HStack(alignment: .center, spacing: 2) {
+                            Text("\(index)")
+                            Image(systemName: "arrow.down.square.fill")
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.red)
+                    } else {
+                        Image(systemName: "minus")
+                            .foregroundColor(.primary)
+                    }
                 }
             }
         }

@@ -11,30 +11,34 @@ struct LookUp: View {
     @State private var searchText = ""
     
     @ObservedObject var modelData = ModelData(index: 1, text: "")
+    @ObservedObject var filterViewModel = FilterViewModel()
     
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading) {
-                    ForEach(searchResults) { instrument in
-                        NavigationLink {
-                            InstrumentNavigation(instrument: instrument)
-                        } label: {
-                            InstrumentRow(instrument: instrument)
-                        }
-                    }
-                    .searchable(text: $searchText, prompt: "Search for company")
+//                    ForEach(searchResults) { instrument in
+//                        NavigationLink {
+//                            TopNavigationInstrument(instrument: instrument)
+//                        } label: {
+//                            InstrumentRow(instrument: instrument)
+//                        }
+//                    }
+//                    .searchable(text: $searchText, prompt: "Search for company")
+                    Text("By category")
+                        .foregroundColor(.primary)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(.leading)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            NavigationLink {
-                                FilteredInstruments(categoryName: "Russian")
-                            } label: {
-                                FilterButton(filterLabel: "Russian")
+                            ForEach(filterViewModel.filters, id: \.key) { filter in
+                                NavigationLink {
+                                    FilteredInstruments(categoryName: filter.value, modelData: ModelData(index: 3, text: filter.key))
+                                } label: {
+                                    FilterButton(filterLabel: filter.value)
+                                }
                             }
-                            FilterButton(filterLabel: "American")
-                            FilterButton(filterLabel: "Chinese")
-                            FilterButton(filterLabel: "Latin")
-                            FilterButton(filterLabel: "German")
                         }
                         .listRowInsets(EdgeInsets())
                     }

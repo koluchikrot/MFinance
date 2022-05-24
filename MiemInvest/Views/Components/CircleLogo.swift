@@ -12,8 +12,9 @@ struct CircleLogo: View {
     
     var body: some View {
         ZStack {
-            Circle()
+            Rectangle()
                 .fill(Color.random)
+                .cornerRadius(15)
             
             Text(letter)
                 .font(.title2)
@@ -22,6 +23,22 @@ struct CircleLogo: View {
     }
 }
 
+struct ColorModel: Identifiable {
+    let value: Color
+    let id = UUID()
+}
+let colors = [
+    ColorModel(value: Color.orange),
+    ColorModel(value: Color.green),
+    ColorModel(value: Color.blue),
+    ColorModel(value: Color.red),
+    ColorModel(value: Color.yellow),
+    ColorModel(value: Color.indigo),
+    ColorModel(value: Color.pink),
+    ColorModel(value: Color.teal),
+    ColorModel(value: Color.purple)
+]
+
 extension Color {
     static var random: Color {
         return Color(
@@ -29,6 +46,9 @@ extension Color {
             green: .random(in: 0...1),
             blue: .random(in: 0...1)
         )
+    }
+    static var randomApproved: Color {
+        return colors[.random(in: 0...8)].value
     }
 }
 

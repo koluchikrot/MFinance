@@ -41,6 +41,8 @@ struct AuthView: View {
                     
                     Spacer()
                 }
+                .padding()
+                .border(Color.primary, width: 3)
             }
 
         }

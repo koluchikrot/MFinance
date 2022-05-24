@@ -9,13 +9,14 @@ import SwiftUI
 
 struct FilteredInstruments: View {
     var categoryName: String
+    @ObservedObject var modelData: ModelData
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                ForEach(ModelData().instruments) { instrument in
+                ForEach(modelData.instruments) { instrument in
                     NavigationLink {
-                        InstrumentNavigation(instrument: instrument)
+                        TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
                     } label: {
                         InstrumentRow(instrument: instrument)
                     }
@@ -29,6 +30,6 @@ struct FilteredInstruments: View {
 
 struct FilteredInstruments_Previews: PreviewProvider {
     static var previews: some View {
-        FilteredInstruments(categoryName: "Russian")
+        FilteredInstruments(categoryName: "Russian", modelData: ModelData(index: 3, text: "RUSSIAN"))
     }
 }

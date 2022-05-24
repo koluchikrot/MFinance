@@ -20,7 +20,7 @@ struct TopInstrument: View {
                     .padding([.leading, .bottom])
                 ForEach(modelData.instruments) { instrument in
                     NavigationLink {
-                        InstrumentNavigation(instrument: instrument)
+                        TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
                     } label: {
                         InstrumentRow(instrument: instrument)
                     }
@@ -28,9 +28,9 @@ struct TopInstrument: View {
             }
             .padding([.top, .bottom], 20)
             .padding(.horizontal, 5)
-            .background(Color.primary.colorInvert())
-            .cornerRadius(15)
-            .shadow(color: Color.primary.opacity(0.10), radius: 15.0, x: 0, y: 0.0)
+            .background(Color("Background"))
+            .cornerRadius(10)
+            .shadow(color: Color("Shadow"), radius: 15.0, x: 0, y: 0.0)
         }
         .padding()
     }
