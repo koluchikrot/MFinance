@@ -63,7 +63,7 @@ struct NewsRow: View {
                     VStack(alignment: .leading, spacing: 3) {
                         if isCropped {
                             Text(news.fullText)
-                                .frame(height: 152, alignment: .top)
+                                .frame(height: 155, alignment: .top)
                                 .truncationMode(.tail)
                         } else {
                             Text(news.fullText)

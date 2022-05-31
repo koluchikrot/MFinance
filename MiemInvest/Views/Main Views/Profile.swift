@@ -13,7 +13,7 @@ struct Profile: View {
             ScrollView (.vertical, showsIndicators: false) {
                 VStack {
                     NavigationLink {
-                        Text("Setting here")
+                        NotificationSettings()
                     } label: {
                         SettingsButton(titleText: "Настройки", iconName: "gearshape.fill")
                     }

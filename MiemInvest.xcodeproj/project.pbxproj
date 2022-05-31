@@ -41,6 +41,7 @@
 		0D90FA41281C815500AE208B /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90FA40281C815400AE208B /* FavoriteButton.swift */; };
 		0DAAC05B28450F0B00FD9415 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAAC05A28450F0700FD9415 /* NotificationManager.swift */; };
 		0DAAC05D2845739400FD9415 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAAC05C2845739400FD9415 /* SettingsButton.swift */; };
+		0DC238B02846704100D05E76 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC238AF2846704100D05E76 /* NotificationSettings.swift */; };
 		0DCA4A20281DCF4F0020935A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCA4A1F281DCF4D0020935A /* FilterButton.swift */; };
 		0DCA4A22281DDE3D0020935A /* FilteredInstruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCA4A21281DDE3C0020935A /* FilteredInstruments.swift */; };
 		0DD2F5632822996700FC566B /* InstrumentResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2F5622822996700FC566B /* InstrumentResponses.swift */; };
@@ -114,6 +115,7 @@
 		0D90FA40281C815400AE208B /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		0DAAC05A28450F0700FD9415 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0DAAC05C2845739400FD9415 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		0DC238AF2846704100D05E76 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		0DCA4A1F281DCF4D0020935A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		0DCA4A21281DDE3C0020935A /* FilteredInstruments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredInstruments.swift; sourceTree = "<group>"; };
 		0DD2F5622822996700FC566B /* InstrumentResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentResponses.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				0D8012A0283BA4730015155C /* TopNavigationInstrument.swift */,
 				0D2DAE55283D327900198057 /* InstrumentInfoView.swift */,
 				0D18C6D5283EBA67008108E2 /* About.swift */,
+				0DC238AF2846704100D05E76 /* NotificationSettings.swift */,
 			);
 			path = "Main Views";
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				0DD3990A28194FFE0088D162 /* ForecastDetail.swift in Sources */,
 				0DD4CB4528214EBA00FAB523 /* AuthView.swift in Sources */,
 				0DF37FA5283C1697009AEEFE /* FilterModel.swift in Sources */,
+				0DC238B02846704100D05E76 /* NotificationSettings.swift in Sources */,
 				0DCA4A20281DCF4F0020935A /* FilterButton.swift in Sources */,
 				0D18C6D6283EBA68008108E2 /* About.swift in Sources */,
 				0DD3991128195CA50088D162 /* InstrumentIndex.swift in Sources */,
