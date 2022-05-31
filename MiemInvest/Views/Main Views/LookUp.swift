@@ -10,50 +10,57 @@ import SwiftUI
 struct LookUp: View {
     @State private var searchText = ""
     
-    @ObservedObject var modelData = ModelData(index: 1, text: "")
+    @ObservedObject var modelData = ModelData(index: 4, text: "")
     @ObservedObject var filterViewModel = FilterViewModel()
+    
+    @EnvironmentObject var favoriteData: ModelData
     
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading) {
-//                    ForEach(searchResults) { instrument in
-//                        NavigationLink {
-//                            TopNavigationInstrument(instrument: instrument)
-//                        } label: {
-//                            InstrumentRow(instrument: instrument)
-//                        }
-//                    }
-//                    .searchable(text: $searchText, prompt: "Search for company")
-                    Text("By category")
-                        .foregroundColor(.primary)
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .padding(.leading)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(filterViewModel.filters, id: \.key) { filter in
-                                NavigationLink {
-                                    FilteredInstruments(categoryName: filter.value, modelData: ModelData(index: 3, text: filter.key))
-                                } label: {
-                                    FilterButton(filterLabel: filter.value)
+                    ForEach(modelData.instruments) { instrument in
+                        NavigationLink {
+                            TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
+                        } label: {
+                            InstrumentRow(instrument: instrument)
+                        }
+                    }
+                    .searchable(text: $modelData.searchString, prompt: "Название, ключевое слово etc")
+                    
+                    if modelData.searchString == "" {
+                        Text("По категориям")
+                            .foregroundColor(.primary)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(.leading)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(filterViewModel.filters, id: \.key) { filter in
+                                    NavigationLink {
+                                        FilteredInstruments(categoryName: filter.value, modelData: ModelData(index: 3, text: filter.key))
+    //                                        .environmentObject(favoriteData)
+                                    } label: {
+                                        FilterButton(filterLabel: filter.value)
+                                    }
                                 }
                             }
+                            .listRowInsets(EdgeInsets())
                         }
-                        .listRowInsets(EdgeInsets())
+                        TopInstrument(title: "Рекомендуем", modelData: ModelData(index: 1, text: ""))
+    //                        .environmentObject(favoriteData)
                     }
-                    TopInstrument(title: "Recomendations", modelData: ModelData(index: 1, text: ""))
                 }
-                .navigationTitle("Look up")
+                .navigationTitle("Поиск")
             }
         }
     }
     
     var searchResults: [Instrument] {
-        if searchText.isEmpty {
+        if searchText.count < 4 {
             return []
         } else {
-            return modelData.instruments.filter { $0.name.contains(searchText) }
+            return ModelData(index: 4, text: searchText).instruments
         }
     }
 }

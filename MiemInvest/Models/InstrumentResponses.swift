@@ -41,7 +41,7 @@ enum Endpoint {
         case .filteredInstruments:
             return "api/instrument/search/filtered"
         case .searchedInstruments:
-            return "search"
+            return "api/instrument/search/text"
         case .latestNews:
             return "api/news/all"
         case .instrumentNews:
@@ -63,7 +63,7 @@ enum Endpoint {
         case .filteredInstruments(let filterName):
             urlComponents.queryItems = [URLQueryItem(name: "filter", value: filterName)]
         case .searchedInstruments(let searchText):
-            urlComponents.queryItems = [URLQueryItem(name: "searchText", value: searchText)]
+            urlComponents.queryItems = [URLQueryItem(name: "searchTerms", value: searchText)]
         case .instrumentNews(let instrumentId):
             urlComponents.queryItems = [URLQueryItem(name: "instrumentId", value: instrumentId)]
         default:
@@ -159,7 +159,7 @@ class InstrumentApi {
         }
         return fetch(url)
             .map { (response: FilterResponse) -> [Filter] in
-                print("\(response)")
+//                print("\(response)")
                 return response.filters
             }
             .replaceError(with: [Filter]())

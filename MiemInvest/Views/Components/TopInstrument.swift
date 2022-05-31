@@ -11,16 +11,22 @@ struct TopInstrument: View {
     var title: String
     @ObservedObject var modelData: ModelData
     
+    @EnvironmentObject var favoriteData: ModelData
+    
     var body: some View {
         ZStack{
             VStack(alignment: .leading) {
-                Text(title)
-                    .fontWeight(.bold)
-                    .font(.title2)
-                    .padding([.leading, .bottom])
+                HStack {
+                    Text(title)
+                        .fontWeight(.bold)
+                        .font(.title2)
+                    Spacer()
+                }
+                .padding([.horizontal, .bottom])
                 ForEach(modelData.instruments) { instrument in
                     NavigationLink {
                         TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
+                            .environmentObject(favoriteData)
                     } label: {
                         InstrumentRow(instrument: instrument)
                     }

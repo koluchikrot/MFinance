@@ -12,12 +12,12 @@ struct FilterButton: View {
     
     var body: some View {
         Text(filterLabel)
-            .foregroundColor(Color.white)
+            .foregroundColor(Color.primary)
 //            .fontWeight(.bold)
             .multilineTextAlignment(.leading)
             .padding()
             .frame(width: 155, height: 125, alignment: .bottomLeading)
-            .background(Color.randomApproved)
+            .background(Color("Accent"))
             .cornerRadius(10)
 //            .shadow(color: Color("Shadow"), radius: 10.0, x: 0, y: 0.0)
 //            .padding([.leading, .top, .bottom])

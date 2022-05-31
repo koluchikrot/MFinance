@@ -9,7 +9,23 @@ import SwiftUI
 
 struct Profile: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ScrollView (.vertical, showsIndicators: false) {
+                VStack {
+                    NavigationLink {
+                        Text("Setting here")
+                    } label: {
+                        SettingsButton(titleText: "Настройки", iconName: "gearshape.fill")
+                    }
+                    NavigationLink {
+                        About()
+                    } label: {
+                        SettingsButton(titleText: "О приложении", iconName: "bell.fill")
+                    }
+                }
+                .navigationTitle("Профиль")
+            }
+        }
     }
 }
 

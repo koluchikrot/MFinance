@@ -18,7 +18,7 @@ struct InstrumentInfo: Codable, Identifiable {
     var country: String?
     var predictions: [Prediction]
     
-    var isFavorite: Bool?
+    var isFavorite: Bool
 }
 
 struct Prediction: Codable, Identifiable {

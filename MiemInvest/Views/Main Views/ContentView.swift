@@ -8,43 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection: Tab = .favorites
+    @ObservedObject var viewModel: SignInViewModel
     
-    enum Tab {
-        case favorites
-        case lookup
-        case news
-        case auth
+    init(viewModel: SignInViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
-        TabView(selection: $selection) {
-            FavoriteInstruments()
-                .tabItem {
-                    Label("Favorites", systemImage: "star")
-                }
-                .tag(Tab.favorites)
-            LookUp()
-                .tabItem {
-                    Label("Search", systemImage: "doc.text.magnifyingglass")
-                }
-                .tag(Tab.lookup)
-            LatestNews()
-                .tabItem {
-                    Label("News", systemImage: "note.text")
-                }
-                .tag(Tab.news)
-            AuthView()
-                .tabItem{
-                    Label("Auth", systemImage: "person.fill")
-                }
+        if self.viewModel.isAuthenticated {
+            MenuView()
+        } else {
+            AuthView(viewModel: viewModel)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let viewModel = SignInViewModel()
+        ContentView(viewModel: viewModel)
             .environmentObject(ModelData())
     }
 }

@@ -38,6 +38,16 @@ final class ModelData: ObservableObject {
             .store(in: &self.cancellableSet)
     }
     
+    func reload() {
+        Publishers.CombineLatest($indexEndpoint, validString)
+            .flatMap { (indexEndpoint, search) -> AnyPublisher<[Instrument], Never> in
+                self.instruments = [Instrument]()
+                return InstrumentApi.shared.fetchInstruments(from: Endpoint(index: indexEndpoint, text: search)!)
+            }
+            .assign(to: \.instruments, on: self)
+            .store(in: &self.cancellableSet)
+    }
+    
     private var cancellableSet: Set<AnyCancellable> = []
 }
 

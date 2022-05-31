@@ -15,22 +15,27 @@ struct FavoriteInstruments: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .leading) {
-                    TopInstrument(title: "Top company for today", modelData: ModelData(index: 2, text: ""))
-                    Text("Stocks")
+                    TopInstrument(title: "Топ инструмент на сегодня", modelData: ModelData(index: 2, text: ""))
+//                        .environmentObject(modelData)
+                    Text("Акции")
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.leading)
                     ForEach(modelData.instruments) { instrument in
                         NavigationLink {
                             TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
+//                                .environmentObject(modelData)
                         } label: {
                             InstrumentRow(instrument: instrument)
                         }
                     }
                     Spacer()
                 }
-                .navigationTitle("Favorites")
+                .navigationTitle("Избранное")
             }
+        }
+        .onAppear {
+            modelData.reload()
         }
     }
 }
@@ -40,6 +45,6 @@ struct FavoriteInstruments_Previews: PreviewProvider {
     
     static var previews: some View {
         FavoriteInstruments()
-//            .environmentObject(modelData)
+            .environmentObject(modelData)
     }
 }

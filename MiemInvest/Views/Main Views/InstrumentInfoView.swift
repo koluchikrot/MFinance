@@ -12,27 +12,33 @@ struct InstrumentInfoView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 10) {
                 if let ticker = infoModel.instrumentInfo!.ticker {
                     Text(ticker)
-                        .background(Color.primary.opacity(0.1))
                         .foregroundColor(Color.secondary)
-                }
-                if let price = infoModel.instrumentInfo!.price {
-                    Text(price)
-                        .font(.title)
-                }
-                if let country = infoModel.instrumentInfo!.country {
-                    ZStack {
-                      Circle()
-                        .fill(Color.primary.opacity(0.1))
-                      Text(country)
-                    }
-                    .frame(width: 40, height: 40)
-                        
                 }
                 if let description = infoModel.instrumentInfo!.description {
                     Text(description)
+                }
+                HStack {
+                    Text("Цена")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Spacer()
+                    if let price = infoModel.instrumentInfo!.price {
+                        Text(price)
+                            .font(.title2)
+                    }
+                }
+                HStack {
+                    Text("Страна")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Spacer()
+                    if let country = infoModel.instrumentInfo!.country {
+                        Text(country)
+                            .font(.title2)
+                    }
                 }
             }
             .padding()

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilteredInstruments: View {
     var categoryName: String
-    @ObservedObject var modelData: ModelData
+    @ObservedObject var modelData: ModelData = ModelData()
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -17,6 +17,7 @@ struct FilteredInstruments: View {
                 ForEach(modelData.instruments) { instrument in
                     NavigationLink {
                         TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
+                            .environmentObject(modelData)
                     } label: {
                         InstrumentRow(instrument: instrument)
                     }

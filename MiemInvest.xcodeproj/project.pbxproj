@@ -18,6 +18,7 @@
 		0D132F3A280CBE8400A59E53 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F39280CBE8400A59E53 /* NewsModel.swift */; };
 		0D132F3C280CBF8D00A59E53 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F3B280CBF8D00A59E53 /* CircleImage.swift */; };
 		0D132F3E280CC2E800A59E53 /* InstrumentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132F3D280CC2E800A59E53 /* InstrumentRow.swift */; };
+		0D18C6D6283EBA68008108E2 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18C6D5283EBA67008108E2 /* About.swift */; };
 		0D22C237280F0361009EC665 /* NewsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D22C236280F0361009EC665 /* NewsRow.swift */; };
 		0D22C239280F07C7009EC665 /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D22C238280F07C7009EC665 /* news.json */; };
 		0D22C23B280F18C9009EC665 /* InstrumentFramed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D22C23A280F18C9009EC665 /* InstrumentFramed.swift */; };
@@ -38,6 +39,8 @@
 		0D8484E1283A40960092E314 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8484E0283A40960092E314 /* NewsViewModel.swift */; };
 		0D8976E9282D9D7B0007C198 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8976E8282D9D7B0007C198 /* Profile.swift */; };
 		0D90FA41281C815500AE208B /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90FA40281C815400AE208B /* FavoriteButton.swift */; };
+		0DAAC05B28450F0B00FD9415 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAAC05A28450F0700FD9415 /* NotificationManager.swift */; };
+		0DAAC05D2845739400FD9415 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAAC05C2845739400FD9415 /* SettingsButton.swift */; };
 		0DCA4A20281DCF4F0020935A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCA4A1F281DCF4D0020935A /* FilterButton.swift */; };
 		0DCA4A22281DDE3D0020935A /* FilteredInstruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCA4A21281DDE3C0020935A /* FilteredInstruments.swift */; };
 		0DD2F5632822996700FC566B /* InstrumentResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2F5622822996700FC566B /* InstrumentResponses.swift */; };
@@ -87,6 +90,7 @@
 		0D132F39280CBE8400A59E53 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		0D132F3B280CBF8D00A59E53 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		0D132F3D280CC2E800A59E53 /* InstrumentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentRow.swift; sourceTree = "<group>"; };
+		0D18C6D5283EBA67008108E2 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		0D22C236280F0361009EC665 /* NewsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRow.swift; sourceTree = "<group>"; };
 		0D22C238280F07C7009EC665 /* news.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = news.json; sourceTree = "<group>"; };
 		0D22C23A280F18C9009EC665 /* InstrumentFramed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentFramed.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 		0D8484E0283A40960092E314 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		0D8976E8282D9D7B0007C198 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		0D90FA40281C815400AE208B /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		0DAAC05A28450F0700FD9415 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		0DAAC05C2845739400FD9415 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		0DCA4A1F281DCF4D0020935A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		0DCA4A21281DDE3C0020935A /* FilteredInstruments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredInstruments.swift; sourceTree = "<group>"; };
 		0DD2F5622822996700FC566B /* InstrumentResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentResponses.swift; sourceTree = "<group>"; };
@@ -232,6 +238,7 @@
 				0DF37FA6283C18E1009AEEFE /* FilterViewModel.swift */,
 				0D2DAE51283D187100198057 /* InstrumentInfoModel.swift */,
 				0D2DAE53283D204900198057 /* InstrumentInfoViewModel.swift */,
+				0DAAC05A28450F0700FD9415 /* NotificationManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -265,6 +272,7 @@
 				0D80129E283BA0AD0015155C /* SegmentedControlTestView.swift */,
 				0D8012A0283BA4730015155C /* TopNavigationInstrument.swift */,
 				0D2DAE55283D327900198057 /* InstrumentInfoView.swift */,
+				0D18C6D5283EBA67008108E2 /* About.swift */,
 			);
 			path = "Main Views";
 			sourceTree = "<group>";
@@ -282,6 +290,7 @@
 				0DD3990928194FFE0088D162 /* ForecastDetail.swift */,
 				0D2341AE2839746100A01021 /* CircleLogo.swift */,
 				0D8012A2283BC5880015155C /* Segmented Control */,
+				0DAAC05C2845739400FD9415 /* SettingsButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -438,11 +447,14 @@
 				0DD3990F2819566F0088D162 /* InstrumentNews.swift in Sources */,
 				0DD3990C281953A00088D162 /* InstrumentForecasts.swift in Sources */,
 				0D132F3E280CC2E800A59E53 /* InstrumentRow.swift in Sources */,
+				0DAAC05B28450F0B00FD9415 /* NotificationManager.swift in Sources */,
 				0DD8944B280D8BC40005B69C /* InstrumentList.swift in Sources */,
+				0DAAC05D2845739400FD9415 /* SettingsButton.swift in Sources */,
 				0DD3990A28194FFE0088D162 /* ForecastDetail.swift in Sources */,
 				0DD4CB4528214EBA00FAB523 /* AuthView.swift in Sources */,
 				0DF37FA5283C1697009AEEFE /* FilterModel.swift in Sources */,
 				0DCA4A20281DCF4F0020935A /* FilterButton.swift in Sources */,
+				0D18C6D6283EBA68008108E2 /* About.swift in Sources */,
 				0DD3991128195CA50088D162 /* InstrumentIndex.swift in Sources */,
 				0D2DAE54283D204900198057 /* InstrumentInfoViewModel.swift in Sources */,
 				0D2341AF2839746400A01021 /* CircleLogo.swift in Sources */,

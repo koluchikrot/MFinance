@@ -20,29 +20,30 @@ struct AuthView: View {
             ProgressView()
                 .zIndex(0)
         }
-        VStack {
-            Text("Welcome to")
-                .font(.title)
-            Text("MiemInvest")
-                .font(.title2)
+        VStack(spacing: 30) {
+            VStack {
+                Text("Приветствуем в")
+                    .font(.title)
+                Text("MiemInvest")
+                    .font(.title2)
+            }
             Button {
                 viewModel.signIn()
             } label: {
                 HStack(spacing: 5) {
-                    Spacer()
                     
                     Image("microsoft_logo")
                         .resizable()
                         .frame(width: 21, height: 21)
                     
-                    Text("Sign in with Microsoft")
+                    Text("Войти с Microsoft")
                         .foregroundColor(.primary)
                         .font(.system(size: 15, weight: .semibold))
-                    
-                    Spacer()
                 }
                 .padding()
-                .border(Color.primary, width: 3)
+                .background(Color("Accent"))
+                .clipShape(Capsule())
+//                .border(Color.primary, width: 2)
             }
 
         }

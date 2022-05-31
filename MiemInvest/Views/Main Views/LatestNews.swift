@@ -10,15 +10,18 @@ import SwiftUI
 struct LatestNews: View {
     @ObservedObject var newsModel = NewsViewModel()
     
+    @EnvironmentObject var favoriteData: ModelData
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false){
                 VStack {
                     ForEach(newsModel.news) {newsUnit in
                         NewsRow(news: newsUnit)
+                            .environmentObject(favoriteData)
                     }
                 }
-                .navigationTitle("Latest news")
+                .navigationTitle("Новости")
             }
         }
     }

@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct InstrumentNews: View {
+    @EnvironmentObject var favoriteData: ModelData
     
     @ObservedObject var newsModel: NewsViewModel
-    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             VStack(alignment: .leading) {
                 if !newsModel.news.isEmpty {
                     ForEach(newsModel.news) {newsUnit in
                         NewsRow(news: newsUnit)
+                            .environmentObject(favoriteData)
                     }
                 } else {
                     Text("No news published for this instrument yet")

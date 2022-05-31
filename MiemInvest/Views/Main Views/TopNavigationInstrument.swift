@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TopNavigationInstrument: View {
+    @EnvironmentObject var modelData: ModelData
     @ObservedObject var infoModel: InstrumentInfoViewModel
     
     let screenWidth = screenSize.width
@@ -27,9 +28,9 @@ struct TopNavigationInstrument: View {
                         .frame(width: screenWidth, height: 40)
                     switch selectedIndex {
                     case 0:
-                        InstrumentInfoView(infoModel: infoModel)
-                    case 1:
                         InstrumentForecasts(infoModel: infoModel)
+                    case 1:
+                        InstrumentInfoView(infoModel: infoModel)
                     case 2:
                         InstrumentNews(newsModel: NewsViewModel(index: 6, text: infoModel.instrumentInfo!.id))
                     default:
@@ -39,6 +40,7 @@ struct TopNavigationInstrument: View {
             }
             .navigationTitle(infoModel.instrumentInfo!.name)
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: FavoriteButton(isSet: infoModel.instrumentInfo!.isFavorite, instrumentId: infoModel.instrumentInfo!.id).environmentObject(modelData))
             .background(NavigationConfigurator { nc in
                             nc.navigationBar.barTintColor = UIColor(navBarColor)
                         })
@@ -58,7 +60,7 @@ struct TopNavigationInstrument: View {
                             Rectangle()
                                 .fill(Color.clear)
                                 .frame(width: screenWidth, height: 50)
-                            SegmentedControl(selectedIndex: $selectedIndex, titles: ["Index", "Forecast", "News"])
+                            SegmentedControl(selectedIndex: $selectedIndex, titles: ["Прогноз", "Инфо", "Новости"])
                         }
                         Spacer()
                     }

@@ -18,30 +18,31 @@ struct ForecastDetail: View {
             VStack(alignment: .leading) {
                 Text(type.firstUppercased)
                     .font(.title2)
-                    .padding(.leading)
+//                    .font(.subheadline)
+                    .fontWeight(.bold)
                 Divider()
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Price change")
+                        Text("Изменение цены")
                             .foregroundColor(.secondary)
                         Text(prediction.firstUppercased)
+                            .fontWeight(.bold)
                     }
-                    .padding([.leading])
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text("Certainty")
+                        Text("Уверенность")
                             .foregroundColor(.secondary)
                         Text(certainty)
+                            .fontWeight(.bold)
                     }
-                    .padding(.trailing)
                 }
             }
-            .padding([.top, .bottom])
+            .padding()
             .background(Color("Background"))
             .cornerRadius(10)
             .shadow(color: Color("Shadow"), radius: 15.0, x: 0, y: 0.0)
         }
-        .padding()
+        .padding([.horizontal, .top])
     }
 }
 

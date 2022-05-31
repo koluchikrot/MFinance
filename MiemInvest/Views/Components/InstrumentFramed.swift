@@ -10,10 +10,13 @@ import SwiftUI
 struct InstrumentFramed: View {
     var instrument: Instrument
     
+    @EnvironmentObject var favoriteData: ModelData
+    
     var body: some View {
         ZStack {
             NavigationLink {
                 TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
+                    .environmentObject(favoriteData)
             } label: {
                 HStack(alignment: .center, spacing: 5) {
                     if let ticker = instrument.ticker {
@@ -23,23 +26,24 @@ struct InstrumentFramed: View {
                     }
                     if let index = instrument.index {
                         if index >= 50 {
-                            Image(systemName: "arrowtriangle.up.fill")
+                            Image(systemName: "arrow.up.square.fill")
                                 .font(.subheadline)
                                 .foregroundColor(.green)
                         } else {
-                            Image(systemName: "arrowtriangle.down.fill")
+                            Image(systemName: "arrow.down.square.fill")
                                 .font(.subheadline)
                                 .foregroundColor(.red)
                         }
                     }
                 }
                 .padding()
-                .frame(width: 100, height: 100, alignment: .bottomLeading)
+//                .frame(width: 100, height: 100, alignment: .bottomLeading)
             }
         }
-        .background(Color("Background"))
+//        .background(Color("Background"))
+        .background(Color("Accent"))
         .cornerRadius(10)
-        .shadow(color: Color("Shadow"), radius: 15.0, x: 0, y: 0.0)
+//        .shadow(color: Color("Shadow"), radius: 15.0, x: 0, y: 0.0)
     }
 }
 
