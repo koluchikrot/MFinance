@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Profile: View {
+    @ObservedObject var signInViewModel: SignInViewModel
+    
     var body: some View {
         NavigationView {
             ScrollView (.vertical, showsIndicators: false) {
@@ -20,10 +22,11 @@ struct Profile: View {
                     NavigationLink {
                         About()
                     } label: {
-                        SettingsButton(titleText: "О приложении", iconName: "bell.fill")
+                        SettingsButton(titleText: "О приложении", iconName: "doc.text.fill")
                     }
                 }
                 .navigationTitle("Профиль")
+                .navigationBarItems(trailing: ExitButton(signInViewModel: signInViewModel))
             }
         }
     }
@@ -31,6 +34,19 @@ struct Profile: View {
 
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
-        Profile()
+        Profile(signInViewModel: SignInViewModel())
+    }
+}
+
+struct ExitButton: View {
+    @ObservedObject var signInViewModel: SignInViewModel
+    
+    var body: some View {
+        Button {
+            signInViewModel.singOut()
+        } label: {
+            Image(systemName: "rectangle.portrait.and.arrow.right")
+                .foregroundColor(Color.blue)
+        }
     }
 }

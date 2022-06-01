@@ -9,14 +9,14 @@ import SwiftUI
 
 struct AuthView: View {
     
-    @ObservedObject var viewModel: SignInViewModel
+    @ObservedObject var signInViewModel: SignInViewModel
     
     init(viewModel: SignInViewModel) {
-        self.viewModel = viewModel
+        self.signInViewModel = viewModel
     }
     
     var body: some View {
-        if self.viewModel.loading {
+        if self.signInViewModel.loading {
             ProgressView()
                 .zIndex(0)
         }
@@ -28,7 +28,7 @@ struct AuthView: View {
                     .font(.title2)
             }
             Button {
-                viewModel.signIn()
+                signInViewModel.signIn()
             } label: {
                 HStack(spacing: 5) {
                     
@@ -43,7 +43,6 @@ struct AuthView: View {
                 .padding()
                 .background(Color("Accent"))
                 .clipShape(Capsule())
-//                .border(Color.primary, width: 2)
             }
 
         }
@@ -51,7 +50,7 @@ struct AuthView: View {
     }
     
     func signInAction() {
-        viewModel.signIn()
+        signInViewModel.signIn()
     }
 }
 

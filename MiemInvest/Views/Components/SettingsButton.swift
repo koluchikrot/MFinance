@@ -14,7 +14,7 @@ struct SettingsButton: View {
     var body: some View {
         HStack (spacing: 10) {
             Image(systemName: iconName)
-                .foregroundColor(.primary)
+                .foregroundColor(Color("Accent"))
                 .font(.title)
             Text(titleText)
                 .foregroundColor(.primary)

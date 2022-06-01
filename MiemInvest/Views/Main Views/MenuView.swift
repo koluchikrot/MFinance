@@ -17,6 +17,7 @@ struct MenuView: View {
         case auth
     }
     
+    @ObservedObject var signInViewModel: SignInViewModel
     @ObservedObject var favoriteData = ModelData()
     
     var body: some View {
@@ -39,7 +40,7 @@ struct MenuView: View {
                     Label("Новости", systemImage: "note.text")
                 }
                 .tag(Tab.news)
-            Profile()
+            Profile(signInViewModel: signInViewModel)
                 .tabItem {
                     Label("Профиль", systemImage: "person.fill")
                 }
@@ -50,7 +51,7 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuView(signInViewModel: SignInViewModel())
             .environmentObject(ModelData())
     }
 }

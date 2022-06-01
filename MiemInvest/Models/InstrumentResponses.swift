@@ -104,13 +104,16 @@ class InstrumentApi {
     
     func fetch<T: Decodable>(_ url: URL) -> AnyPublisher<T, Error> {
         let defaults = UserDefaults.standard
-        let basicToken = defaults.value(forKey: "jsonwebtoken")!
+        guard let basicToken = defaults.value(forKey: "jsonwebtoken") else {
+            return Empty(completeImmediately: false).eraseToAnyPublisher()
+        }
+//        let basicToken = defaults.value(forKey: "jsonwebtoken")!
         
         let headers = [
             "Authorization": "Bearer \(basicToken)",
         ]
         
-        print(url)
+//        print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.timeoutInterval = 60
@@ -118,7 +121,7 @@ class InstrumentApi {
         
         let publisher = URLSession.shared.dataTaskPublisher(for: request)
             .map{ response in
-                print("\(response.data)")
+//                print("\(response.data)")
                 return response.data }
             .decode(type: T.self, decoder: decoder)
             .receive(on: RunLoop.main)

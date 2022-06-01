@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel: SignInViewModel
+    @ObservedObject var signInViewModel: SignInViewModel
     
     init(viewModel: SignInViewModel) {
-        self.viewModel = viewModel
+        self.signInViewModel = viewModel
     }
     
     var body: some View {
-        if self.viewModel.isAuthenticated {
-            MenuView()
+        if self.signInViewModel.isAuthenticated {
+            MenuView(signInViewModel: signInViewModel)
         } else {
-            AuthView(viewModel: viewModel)
+            AuthView(viewModel: signInViewModel)
         }
     }
 }

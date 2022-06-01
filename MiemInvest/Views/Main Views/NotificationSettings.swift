@@ -15,12 +15,9 @@ struct NotificationSettings: View {
             Toggle("Я хочу получать уведомления", isOn: $showNotificationSettingsUI)
                 .toggleStyle(.switch)
                 .onChange(of: showNotificationSettingsUI) { value in
-                    // action...
                     if value {
                         NotificationManager.shared.requestAuthorization { granted in
-                            // 2
                             if granted {
-//                                showNotificationSettingsUI = true
                                 NotificationManager.shared.createNotification()
                                 print("Created notification")
                             }

@@ -18,7 +18,6 @@ struct ForecastDetail: View {
             VStack(alignment: .leading) {
                 Text(type.firstUppercased)
                     .font(.title2)
-//                    .font(.subheadline)
                     .fontWeight(.bold)
                 Divider()
                 HStack {

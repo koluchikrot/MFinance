@@ -95,7 +95,7 @@ class SignInViewModel: NSObject, ObservableObject, ASWebAuthenticationPresentati
                 return
             }
             
-            try! JSONDecoder().decode(TokenResponse.self, from: data)
+//            try! JSONDecoder().decode(TokenResponse.self, from: data)
             
             guard let tokenResponse = try? JSONDecoder().decode(TokenResponse.self, from: data) else {
                 completion(.failure(.invalidCredentials))

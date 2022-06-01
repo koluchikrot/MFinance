@@ -25,6 +25,7 @@ struct FilteredInstruments: View {
                 Spacer()
             }
             .navigationTitle(categoryName)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

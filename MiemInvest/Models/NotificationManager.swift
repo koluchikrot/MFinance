@@ -20,9 +20,7 @@ class NotificationManager: ObservableObject {
             }
     }
     func fetchNotificationSettings() {
-      // 1
       UNUserNotificationCenter.current().getNotificationSettings { settings in
-        // 2
         DispatchQueue.main.async {
           self.settings = settings
         }

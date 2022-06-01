@@ -20,7 +20,7 @@ struct InstrumentNews: View {
                             .environmentObject(favoriteData)
                     }
                 } else {
-                    Text("No news published for this instrument yet")
+                    Text("По данному инструменту еще нет публикаций")
                         .padding(.top)
                 }
             }

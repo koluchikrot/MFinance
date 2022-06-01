@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FavoriteInstruments: View {
-//    @EnvironmentObject var modelData: ModelData
     @ObservedObject var modelData = ModelData()
     
     var body: some View {
@@ -16,7 +15,6 @@ struct FavoriteInstruments: View {
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .leading) {
                     TopInstrument(title: "Топ инструмент на сегодня", modelData: ModelData(index: 2, text: ""))
-//                        .environmentObject(modelData)
                     Text("Акции")
                         .font(.title2)
                         .fontWeight(.bold)
@@ -24,7 +22,6 @@ struct FavoriteInstruments: View {
                     ForEach(modelData.instruments) { instrument in
                         NavigationLink {
                             TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
-//                                .environmentObject(modelData)
                         } label: {
                             InstrumentRow(instrument: instrument)
                         }
@@ -35,6 +32,7 @@ struct FavoriteInstruments: View {
             }
         }
         .onAppear {
+            self.modelData.objectWillChange.send()
             modelData.reload()
         }
     }

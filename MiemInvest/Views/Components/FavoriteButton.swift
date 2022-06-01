@@ -57,7 +57,7 @@ struct FavoriteButton: View {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             showResponse(data)  // <-- for debuging
             guard error == nil else { print("--> error: \(error)"); return }
-            guard let data = data else { print("empty data"); return }
+            guard data != nil else { print("empty data"); return }
         }.resume()
         
 //        modelData.reload()
