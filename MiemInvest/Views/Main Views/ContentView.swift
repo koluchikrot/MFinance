@@ -27,6 +27,5 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = SignInViewModel()
         ContentView(viewModel: viewModel)
-            .environmentObject(ModelData())
     }
 }

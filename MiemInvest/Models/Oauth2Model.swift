@@ -72,7 +72,7 @@ class SignInViewModel: NSObject, ObservableObject, ASWebAuthenticationPresentati
     func getToken(code: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         self.loading = true
         
-        guard let queryUrl = URL(string: "http://192.168.0.17:8443/api/login/callback") else {
+        guard let queryUrl = URL(string: "http://172.20.10.4:8443/api/login/callback") else {
             completion(.failure(.custom(errorMessage: "URL is not correct")))
             return
         }
@@ -94,8 +94,6 @@ class SignInViewModel: NSObject, ObservableObject, ASWebAuthenticationPresentati
                 completion(.failure(.custom(errorMessage: "No data")))
                 return
             }
-            
-//            try! JSONDecoder().decode(TokenResponse.self, from: data)
             
             guard let tokenResponse = try? JSONDecoder().decode(TokenResponse.self, from: data) else {
                 completion(.failure(.invalidCredentials))
@@ -121,52 +119,3 @@ class SignInViewModel: NSObject, ObservableObject, ASWebAuthenticationPresentati
         }
     }
 }
-
-public class AnilistAPIConfigurations: Codable {
-    public let id: Int
-    public let secret: String
-    public let name: String
-    public let redirectURL: URL
-    
-    static func load() -> AnilistAPIConfigurations {
-        let filePath = Bundle.main.url(forResource: "anilist_api", withExtension: "json")!
-        let data = try! Data(contentsOf: filePath)
-        let object = try! JSONDecoder().decode(AnilistAPIConfigurations.self, from: data)
-        return object
-    }
-}
-
-/// Builds authentication URLs.
-public class AnilistAuthenticationURLBuilder {
-    
-    /// The domain URL
-    let domain: String
-    
-    /// Client ID
-    let clientID: Int
-    
-    init(
-        domain: String = "login.microsoftonline.com",
-        clientID: Int) {
-        self.domain = domain
-        self.clientID = clientID
-    }
-    
-    var url: URL {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = domain
-        components.path = "/common/oauth/v2.0/authorize"
-        components.queryItems =
-            [
-                "client_id": String(clientID),
-                "response_type": "code"
-            ].map { URLQueryItem(name: $0, value: $1) }
-        return components.url!
-    }
-    
-    func callAsFunction() -> URL {
-        url
-    }
-}
-

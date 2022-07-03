@@ -16,12 +16,15 @@ struct InstrumentRow: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 5){
-            CircleLogo(letter: firstLetter)
+//            CircleLogo(letter: firstLetter)
+            CircleImage(imageLoader: ImageLoader(attachmentId: instrument.attachmentId!))
                 .frame(width: 50, height: 50)
             VStack(alignment: .leading, spacing: 5){
                 Text(instrument.name)
                     .foregroundColor(.primary)
                     .font(.headline)
+                    .frame(height: UIFont.preferredFont(forTextStyle: .subheadline).lineHeight)
+                    .truncationMode(.tail)
                 if let ticker = instrument.ticker {
                     Text(ticker)
                         .font(.subheadline)

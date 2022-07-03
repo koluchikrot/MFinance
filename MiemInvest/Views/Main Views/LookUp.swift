@@ -19,14 +19,16 @@ struct LookUp: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading) {
-                    ForEach(modelData.instruments) { instrument in
-                        NavigationLink {
-                            TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
-                        } label: {
-                            InstrumentRow(instrument: instrument)
+                    VStack (spacing: 20) {
+                        ForEach(modelData.instruments) { instrument in
+                            NavigationLink {
+                                TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
+                            } label: {
+                                InstrumentRow(instrument: instrument)
+                            }
                         }
+                        .searchable(text: $modelData.searchString, prompt: "Название, ключевое слово, etc.")
                     }
-                    .searchable(text: $modelData.searchString, prompt: "Название, ключевое слово etc")
                     
                     if modelData.searchString == "" {
                         Text("По категориям")
@@ -39,7 +41,6 @@ struct LookUp: View {
                                 ForEach(filterViewModel.filters, id: \.key) { filter in
                                     NavigationLink {
                                         FilteredInstruments(categoryName: filter.value, modelData: ModelData(index: 3, text: filter.key))
-    //                                        .environmentObject(favoriteData)
                                     } label: {
                                         FilterButton(filterLabel: filter.value)
                                     }
@@ -48,7 +49,6 @@ struct LookUp: View {
                             .listRowInsets(EdgeInsets())
                         }
                         TopInstrument(title: "Рекомендуем", modelData: ModelData(index: 1, text: ""))
-    //                        .environmentObject(favoriteData)
                     }
                 }
                 .navigationTitle("Поиск")

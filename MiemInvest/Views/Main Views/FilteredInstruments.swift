@@ -13,7 +13,7 @@ struct FilteredInstruments: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack {
+            VStack (alignment: .leading, spacing: 20) {
                 ForEach(modelData.instruments) { instrument in
                     NavigationLink {
                         TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))

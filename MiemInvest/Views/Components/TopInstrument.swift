@@ -23,12 +23,14 @@ struct TopInstrument: View {
                     Spacer()
                 }
                 .padding([.horizontal, .bottom])
-                ForEach(modelData.instruments) { instrument in
-                    NavigationLink {
-                        TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
-                            .environmentObject(favoriteData)
-                    } label: {
-                        InstrumentRow(instrument: instrument)
+                VStack(alignment: .leading, spacing: 20) {
+                    ForEach(modelData.instruments) { instrument in
+                        NavigationLink {
+                            TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
+                                .environmentObject(favoriteData)
+                        } label: {
+                            InstrumentRow(instrument: instrument)
+                        }
                     }
                 }
             }

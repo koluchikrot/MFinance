@@ -10,13 +10,11 @@ import SwiftUI
 struct NewsRow: View {
     var news: News
     
-    @EnvironmentObject var favoriteData: ModelData
-    
     @State var isCropped: Bool = true
     
     var body: some View {
         HStack(alignment: .top) {
-            if news.sentiment == "0" {
+            if news.sentiment == "0.0" {
                 ZStack {
                     Circle()
                         .fill(Color.red.opacity(0.2))
@@ -26,7 +24,7 @@ struct NewsRow: View {
                 }
                 .frame(width: 33, height: 33)
             }
-            else if news.sentiment == "1" {
+            else if news.sentiment == "1.0" {
                 ZStack {
                     Circle()
                         .fill(Color.yellow.opacity(0.2))
@@ -35,13 +33,22 @@ struct NewsRow: View {
                         .foregroundColor(.yellow)
                 }
                 .frame(width: 33, height: 33)
-            } else if news.sentiment == "2" {
+            } else if news.sentiment == "2.0" {
                 ZStack {
                     Circle()
                         .fill(Color.green.opacity(0.2))
                     Image(systemName: "arrowtriangle.up.fill")
                         .font(.headline)
                         .foregroundColor(.green)
+                }
+                .frame(width: 33, height: 33)
+            } else {
+                ZStack {
+                    Circle()
+                        .fill(Color.gray.opacity(0.2))
+                    Text("?")
+                        .font(.title)
+                        .foregroundColor(Color.gray)
                 }
                 .frame(width: 33, height: 33)
             }
@@ -115,30 +122,12 @@ struct NewsRow: View {
                 HStack {
                     ForEach(news.instruments) { instrument in
                         InstrumentFramed(instrument: instrument)
-                            .environmentObject(favoriteData)
                     }
                 }
             }
             
         }
         .padding()
-    }
-    
-    var sentimentText: Text {
-        if news.sentiment == "0" {
-            return Text(Image(systemName: "arrowtriangle.down.fill"))
-                .font(.headline)
-                .foregroundColor(.red)
-        }
-        else if news.sentiment == "1" {
-            return Text(Image(systemName: "diamond.fill"))
-                .font(.headline)
-                .foregroundColor(.yellow)
-        } else {
-            return Text(Image(systemName: "arrowtriangle.up.fill"))
-                .font(.headline)
-                .foregroundColor(.green)
-        }
     }
     
     var shouldBeCropped: Bool {

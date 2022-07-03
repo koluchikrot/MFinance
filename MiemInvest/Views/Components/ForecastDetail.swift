@@ -24,8 +24,16 @@ struct ForecastDetail: View {
                     VStack(alignment: .leading) {
                         Text("Изменение цены")
                             .foregroundColor(.secondary)
-                        Text(prediction.firstUppercased)
-                            .fontWeight(.bold)
+                        if prediction.firstUppercased == "0" {
+                            Text("Упадет")
+                                .fontWeight(.bold)
+                        } else if prediction.firstUppercased == "1" {
+                            Text("Не изменится")
+                                .fontWeight(.bold)
+                        } else if prediction.firstUppercased == "2" {
+                            Text("Вырастет")
+                                .fontWeight(.bold)
+                        }
                     }
                     Spacer()
                     VStack(alignment: .trailing) {

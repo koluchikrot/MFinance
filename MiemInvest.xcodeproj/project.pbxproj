@@ -37,6 +37,7 @@
 		0D80129F283BA0AE0015155C /* SegmentedControlTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80129E283BA0AD0015155C /* SegmentedControlTestView.swift */; };
 		0D8012A1283BA4730015155C /* TopNavigationInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8012A0283BA4730015155C /* TopNavigationInstrument.swift */; };
 		0D8484E1283A40960092E314 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8484E0283A40960092E314 /* NewsViewModel.swift */; };
+		0D8774F72847ADA700036F44 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8774F62847ADA700036F44 /* ImageLoader.swift */; };
 		0D8976E9282D9D7B0007C198 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8976E8282D9D7B0007C198 /* Profile.swift */; };
 		0D90FA41281C815500AE208B /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90FA40281C815400AE208B /* FavoriteButton.swift */; };
 		0DAAC05B28450F0B00FD9415 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAAC05A28450F0700FD9415 /* NotificationManager.swift */; };
@@ -111,6 +112,7 @@
 		0D80129E283BA0AD0015155C /* SegmentedControlTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlTestView.swift; sourceTree = "<group>"; };
 		0D8012A0283BA4730015155C /* TopNavigationInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationInstrument.swift; sourceTree = "<group>"; };
 		0D8484E0283A40960092E314 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		0D8774F62847ADA700036F44 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		0D8976E8282D9D7B0007C198 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		0D90FA40281C815400AE208B /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		0DAAC05A28450F0700FD9415 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				0D2DAE51283D187100198057 /* InstrumentInfoModel.swift */,
 				0D2DAE53283D204900198057 /* InstrumentInfoViewModel.swift */,
 				0DAAC05A28450F0700FD9415 /* NotificationManager.swift */,
+				0D8774F62847ADA700036F44 /* ImageLoader.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				0D22C23B280F18C9009EC665 /* InstrumentFramed.swift in Sources */,
 				0D77F93E2838413A007BEBAF /* MenuView.swift in Sources */,
 				0D509C192816E4980056A48D /* InstrumentNavigation.swift in Sources */,
+				0D8774F72847ADA700036F44 /* ImageLoader.swift in Sources */,
 				0D80129B283B98F00015155C /* RectPreference.swift in Sources */,
 				0DD8944F280DA24D0005B69C /* TopInstrument.swift in Sources */,
 				0DD89449280D83A20005B69C /* ModelData.swift in Sources */,
@@ -637,6 +641,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiemInvest/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MFinance;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -667,6 +672,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiemInvest/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MFinance;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

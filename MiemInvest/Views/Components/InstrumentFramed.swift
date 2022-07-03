@@ -10,13 +10,10 @@ import SwiftUI
 struct InstrumentFramed: View {
     var instrument: Instrument
     
-    @EnvironmentObject var favoriteData: ModelData
-    
     var body: some View {
         ZStack {
             NavigationLink {
                 TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
-                    .environmentObject(favoriteData)
             } label: {
                 HStack(alignment: .center, spacing: 5) {
                     if let ticker = instrument.ticker {

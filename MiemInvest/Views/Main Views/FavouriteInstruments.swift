@@ -14,19 +14,26 @@ struct FavoriteInstruments: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .leading) {
-                    TopInstrument(title: "Топ инструмент на сегодня", modelData: ModelData(index: 2, text: ""))
-                    Text("Акции")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .padding(.leading)
-                    ForEach(modelData.instruments) { instrument in
-                        NavigationLink {
-                            TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
-                        } label: {
-                            InstrumentRow(instrument: instrument)
+                    if modelData.instruments.count == 0 {
+                        Text("Упс, кажется, у Вас нет ни одного избранного инструмента!")
+                            .multilineTextAlignment(.leading)
+                    } else {
+                        TopInstrument(title: "Лучшее на сегодня", modelData: ModelData(index: 2, text: ""))
+                        Text("Акции")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(.leading)
+                        VStack(alignment: .leading, spacing: 25) {
+                            ForEach(modelData.instruments) { instrument in
+                                NavigationLink {
+                                    TopNavigationInstrument(infoModel: InstrumentInfoViewModel(instrumentId: instrument.id))
+                                } label: {
+                                    InstrumentRow(instrument: instrument)
+                                }
+                            }
                         }
+                        Spacer()
                     }
-                    Spacer()
                 }
                 .navigationTitle("Избранное")
             }

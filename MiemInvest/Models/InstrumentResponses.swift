@@ -27,7 +27,8 @@ enum Endpoint {
     case filters
     
     var baseUrl: URL {
-         URL(string: "http://192.168.0.17:8443/")!
+//         URL(string: "http://192.168.0.17:8443/")!
+        URL(string: "http://172.20.10.4:8443/")!
     }
     
     func path() -> String {

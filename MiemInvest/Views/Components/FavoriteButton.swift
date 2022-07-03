@@ -22,7 +22,7 @@ struct FavoriteButton: View {
     }
     
     var absoluteUrl: URL? {
-        guard let queryUrl = URL(string: "http://192.168.0.17:8443/api/user/favorites") else {
+        guard let queryUrl = URL(string: "http://172.20.10.4:8443/api/user/favorites") else {
             return nil
         }
         let components = URLComponents(url: queryUrl, resolvingAgainstBaseURL: true)

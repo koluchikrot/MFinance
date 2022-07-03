@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct CircleImage: View {
-    var image: Image
+    @ObservedObject var imageLoader: ImageLoader
+    @State private var animate = false
     
     var body: some View {
-        image
-            .resizable()
-            .clipShape(Circle())
+        ZStack {
+            if self.imageLoader.image != nil {
+                Image(uiImage: self.imageLoader.image!)
+                    .resizable()
+            } else {
+                    Rectangle()
+                        .fill(.gray)
+            }
+        }
+        .cornerRadius(15)
     }
+
 }
 
 struct CircleImage_Previews: PreviewProvider {
     static var previews: some View {
-        CircleImage(image: Image("sample_image"))
+        CircleImage(imageLoader: ImageLoader (attachmentId: "100003"))
     }
 }
